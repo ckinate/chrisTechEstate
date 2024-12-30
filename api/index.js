@@ -7,8 +7,13 @@ import listingRouter from './routes/listing.route.js';
 import { specs, swaggerUi } from './swagger.js';
 import cookieParser from 'cookie-parser';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
+
+// Workaround for __dirname in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 
 mongoose.connect(process.env.MONGO).then(() => {
